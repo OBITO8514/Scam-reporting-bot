@@ -14,9 +14,9 @@ const REPORTER_NAME = process.env.REPORTER_NAME || 'Telegram User';
 const MAX_FILES = 10;
 const MAX_TOTAL_BYTES = 20 * 1024 * 1024; // Gmail limit is 25MB
 
-// Load up to 3 Gmail accounts
+// Load up to 5 Gmail accounts
 const accounts = [];
-for (let i = 1; i <= 3; i++) {
+for (let i = 1; i <= 5; i++) {
   const user = process.env[`GMAIL_${i}_USER`];
   const pass = process.env[`GMAIL_${i}_PASS`];
   if (user && pass) {
