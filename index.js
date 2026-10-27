@@ -25,13 +25,16 @@ for (let i = 1; i <= 5; i++) {
       transporter: nodemailer.createTransport({
         service: 'gmail',
         auth: { user, pass: pass.replace(/\s+/g, '') },
+        connectionTimeout: 15000,
+        greetingTimeout: 15000,
+        socketTimeout: 30000,
       }),
     });
   }
 }
 if (!accounts.length) throw new Error('No Gmail accounts configured');
 
-const bot = new Telegraf(BOT_TOKEN);
+const bot = new Telegraf(BOT_TOKEN, { handlerTimeout: 300000 });
 const sessions = new Map(); // userId -> { step, data, files }
 
 // ---------- HELPERS ----------
